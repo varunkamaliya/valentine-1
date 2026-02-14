@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Megha</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff0f3, #ffe3ec);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Georgia", serif;
+  overflow: hidden;
+}
+
+.card {
+  width: 90%;
+  max-width: 380px;
+  background: white;
+  padding: 26px 22px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-size: 22px;
+  color: #ff4d6d;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #333;
+  min-height: 220px;
+  white-space: pre-line;
+}
+
+.btn {
+  margin-top: 18px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 14px;
+}
+
+.spark {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #ff8fa3;
+  border-radius: 50%;
+  animation: float 5s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="title">Megha 🤍</div>
+  <div class="text" id="text"></div>
+
+  <button class="btn" onclick="sendLove()">
+    Send him a smile 😊
+  </button>
+</div>
+
+<script>
+const message = 
+`I just wanted to tell you something simple.
+
+Not dramatic.
+Not loud.
+Just true.
+
+Your smile feels like a safe place.
+Your voice feels like home.
+
+Even on ordinary days,
+you make the world a little softer,
+a little kinder.
+
+I hope today you smile
+for no reason at all 🤍`;
+
+let i = 0;
+const speed = 40;
+const textEl = document.getElementById("text");
+
+function type() {
+  if (i < message.length) {
+    textEl.textContent += message.charAt(i);
+    i++;
+    setTimeout(type, speed);
+  }
+}
+
+type();
+
+// floating lights
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = Math.random()*100 + "vw";
+  s.style.animationDelay = Math.random()*5 + "s";
+  document.body.appendChild(s);
+}
+
+function sendLove() {
+  const phone = "916351031592";
+  const msg = encodeURIComponent("I smiled 🤍");
+  window.location.href =
+    `https://wa.me/${phone}?text=${msg}`;
+}
+</script>
+
+</body>
+</html>
